@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Vulder.Search.Core;
+using Vulder.Search.Infrastructure;
 using Vulder.Search.Infrastructure.Config;
 
 namespace Vulder.Search.Api
@@ -25,6 +28,12 @@ namespace Vulder.Search.Api
             services.AddSingleton<IMongoDbConfiguration>(sp =>
                 sp.GetRequiredService<IOptions<MongoDbConfiguration>>().Value);
             services.AddGrpc();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new DefaultCoreModule());
+            builder.RegisterModule(new DefaultInfrastructureModule());
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.

@@ -6,7 +6,7 @@ namespace Vulder.Search.Infrastructure.Data
 {
     public abstract class MongoDbContext
     {
-        public IMongoCollection<School> SchoolsCollection { get; set; }
+        public IMongoCollection<School> SchoolsCollection { get; }
 
         protected MongoDbContext(IMongoDbConfiguration configuration)
         {
