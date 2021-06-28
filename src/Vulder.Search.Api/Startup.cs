@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Vulder.Search.Api.Services;
 using Vulder.Search.Core;
 using Vulder.Search.Infrastructure;
 using Vulder.Search.Infrastructure.Config;
@@ -27,6 +28,7 @@ namespace Vulder.Search.Api
                 Configuration.GetSection(nameof(MongoDbConfiguration)));
             services.AddSingleton<IMongoDbConfiguration>(sp =>
                 sp.GetRequiredService<IOptions<MongoDbConfiguration>>().Value);
+            services.AddMongoDb();
             services.AddGrpc();
         }
 
@@ -50,7 +52,7 @@ namespace Vulder.Search.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<SearchService>();
 
                 endpoints.MapGet("/", async context =>
                 {

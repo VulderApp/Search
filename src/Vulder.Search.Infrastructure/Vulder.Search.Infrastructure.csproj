@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.38.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.12.4" />
     <PackageReference Include="Vulder.SharedKernel" Version="0.1.4" />
   </ItemGroup>

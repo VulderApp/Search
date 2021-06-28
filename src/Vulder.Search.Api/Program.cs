@@ -1,6 +1,7 @@
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Vulder.Search.Api
 {
@@ -18,7 +19,12 @@ namespace Vulder.Search.Api
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                        .ConfigureLogging(logging =>
+                        {
+                            logging.ClearProviders();
+                            logging.AddConsole();
+                        });
                 });
     }
 }

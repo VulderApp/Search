@@ -4,6 +4,7 @@ using Autofac;
 using MediatR;
 using MediatR.Pipeline;
 using Vulder.Search.Core.ProjectAggregate.School;
+using Vulder.Search.Infrastructure.Data;
 using Vulder.Search.Infrastructure.Data.Repository;
 using Module = Autofac.Module;
 
@@ -21,7 +22,7 @@ namespace Vulder.Search.Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SchoolRepository>()
-                .As<ISchoolRepository>();
+                .As<ISchoolRepository>().InstancePerLifetimeScope();
             builder.RegisterType<Mediator>()
                 .As<IMediator>().InstancePerLifetimeScope();
 

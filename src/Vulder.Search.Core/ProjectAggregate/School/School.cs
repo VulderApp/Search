@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 using Vulder.SharedKernel;
 
