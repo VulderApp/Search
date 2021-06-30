@@ -3,8 +3,7 @@ services:
   search:
     build: .
     ports:
-      - 5000:5000
-      - 5001:5001
+      - 80:80
     restart: always
   mongo:
     image: mongo
