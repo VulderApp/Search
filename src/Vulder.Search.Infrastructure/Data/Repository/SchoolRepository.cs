@@ -16,10 +16,14 @@ namespace Vulder.Search.Infrastructure.Data.Repository
         }
 
         public Task<List<School>> Get(string input)
-            => Task.FromResult(_schoolCollection.Find(s => s.Name == input).Limit(10).ToList());
+            => Task.FromResult(_schoolCollection.Find(Builders<School>.Filter.Text(input)).Limit(10).ToList());
 
         public async Task Create(School school)
-            => await _schoolCollection.InsertOneAsync(school);
+        {
+            await _schoolCollection.InsertOneAsync(school);
+            await _schoolCollection.Indexes.CreateOneAsync(
+                new CreateIndexModel<School>(Builders<School>.IndexKeys.Text(s => s.Name)));
+        }
 
         public async Task Delete(Guid id)
             => await _schoolCollection.DeleteOneAsync(s => s.Id == id);
