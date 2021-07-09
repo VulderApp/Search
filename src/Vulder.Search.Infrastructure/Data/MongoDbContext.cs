@@ -11,9 +11,9 @@ namespace Vulder.Search.Infrastructure.Data
 
         public MongoDbContext(IMongoDbConfiguration configuration)
         {
-            var client = new MongoClient(configuration.ConnectionString ?? Environment.GetEnvironmentVariable("MongoServer"));
-            var db = client.GetDatabase(configuration.DbName ?? "Vulder");
-            SchoolsCollection = db.GetCollection<School>(configuration.SchoolsCollectionName ?? "Schools");
+            var client = new MongoClient(Environment.GetEnvironmentVariable("MongoServer") ?? configuration.ConnectionString);
+            var db = client.GetDatabase("Vulder");
+            SchoolsCollection = db.GetCollection<School>("Schools");
         }
     }
 }
