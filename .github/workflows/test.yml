@@ -16,4 +16,6 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Test project
-        run: dotnet test test/Vulder.Search.Test
+        run: dotnet test --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      - name: Codecov
+        uses: codecov/codecov-action@v1
