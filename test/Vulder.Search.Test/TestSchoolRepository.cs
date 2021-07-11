@@ -38,20 +38,23 @@ namespace Vulder.Search.Test
         [Fact]
         public async void UpdateSchoolDocument()
         {
-            var school = await _repository.Get(SchoolName);
-            school[0].Name = UpdateSchoolName;
-            await _repository.Update(school[0]);
+            var schoolEnt = new School(SchoolName, "https://example.com", "xyz@xyz.pl");
+            schoolEnt.GenerateId();
+            await _repository.Create(schoolEnt);
+
+            schoolEnt.Name = UpdateSchoolName;
+            await _repository.Update(schoolEnt);
             var result = await _repository.Get("ZSPnr2");
-            Assert.Equal(school[0].Name, result[0].Name);
+            Assert.Equal(schoolEnt.Name, result[0].Name);
         }
 
         [Fact]
         public async void DeleteSchoolDocument()
         {
-            var school = await _repository.Get(UpdateSchoolName);
-            await _repository.Delete(school[0].Id);
-            var result = await _repository.Get(UpdateSchoolName);
-            Assert.Equal(school.Count - 1, result.Count);
+            var schoolEnt = new School(SchoolName, "https://example.com", "xyz@xyz.pl");
+            schoolEnt.GenerateId();
+            await _repository.Create(schoolEnt);
+            await _repository.Delete(schoolEnt.Id);
         }
 
         public void Dispose()
