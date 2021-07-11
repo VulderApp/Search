@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Vulder.Search.Test
 {
-    public class TestSchoolRepository
+    public class TestSchoolRepository : IDisposable
     {
         private const string SchoolName = "ZSPnr1";
         private const string UpdateSchoolName = "ZSPnr2";
@@ -52,6 +52,11 @@ namespace Vulder.Search.Test
             await _repository.Delete(school[0].Id);
             var result = await _repository.Get(UpdateSchoolName);
             Assert.Equal(school.Count - 1, result.Count);
+        }
+
+        public void Dispose()
+        {
+            _runner.Dispose();
         }
     }
 }
