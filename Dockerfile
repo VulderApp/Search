@@ -12,7 +12,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine3.13
 WORKDIR /app
 
 COPY --from=build /app .
-ENV MongoServer=mongodb://localhost:27017 
+ENV MongoServer=mongodb://192.168.1.8:27017 
 EXPOSE 80
 
 ENTRYPOINT [ "dotnet", "Vulder.Search.Api.dll" ]
