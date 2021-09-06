@@ -11,13 +11,19 @@ namespace Vulder.Search.Test
 
         public TestSchoolEntity()
         {
-            _school = new School("ZSPnr1", "http://example.com", "xyz@example.com");
+            _school = new School
+            {
+                Name = "ZSPnr1",
+                Url = "http://example.com",
+                GuardianEmail = "xyz@example.com"
+            };
         }
         
         [Fact]
         public void GenerateId()
         {
             _school.GenerateId();
+            
             Assert.IsType<Guid>(_school.Id);
             Assert.Equal(GuidLenght, _school.Id.ToString().Length);
         }

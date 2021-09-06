@@ -22,9 +22,12 @@ namespace Vulder.Search.Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SchoolRepository>()
-                .As<ISchoolRepository>().InstancePerLifetimeScope();
+                .As<ISchoolRepository>()
+                .InstancePerLifetimeScope();
+            
             builder.RegisterType<Mediator>()
-                .As<IMediator>().InstancePerLifetimeScope();
+                .As<IMediator>()
+                .InstancePerLifetimeScope();
 
             builder.Register<ServiceFactory>(context =>
             {

@@ -14,14 +14,7 @@ namespace Vulder.Search.Core.ProjectAggregate.School
         
         [BsonRequired]
         public string GuardianEmail { get; set; }
-
-        public School(string name, string url, string guardianEmail)
-        {
-            Name = name;
-            Url = url;
-            GuardianEmail = guardianEmail;
-        }
-
+        
         public void GenerateId()
             => Id = Guid.NewGuid();
     }
