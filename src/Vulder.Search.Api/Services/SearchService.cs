@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using Grpc.Core;
+using MediatR;
 using Vulder.Protos.Search;
+using Vulder.Search.Core.Models;
 using Vulder.Search.Core.ProjectAggregate.School;
 using Vulder.Search.Infrastructure.Data.Repository;
 
@@ -8,18 +10,23 @@ namespace Vulder.Search.Api.Services
 {
     public class SearchService : Vulder.Protos.Search.Search.SearchBase
     {
-        private readonly ISchoolRepository _repository;
-        
-        public SearchService(ISchoolRepository repository)
+        private readonly IMediator _mediator;
+
+        public SearchService(ISchoolRepository repository, IMediator mediator)
         {
-            _repository = repository;
+            _mediator = mediator;
         }
         
         public override async Task<CreateResponse> Create(CreateRequest request, ServerCallContext context)
         {
             try
             {
-                await _repository.Create(new School(request.Name, request.Url, request.RequesterEmail));
+                await _mediator.Send(new CreateSchoolModel
+                {
+                    Name = request.Name,
+                    Url = request.Url,
+                    RequesterEmail = request.RequesterEmail
+                });
 
                 return new CreateResponse
                 {
@@ -35,9 +42,13 @@ namespace Vulder.Search.Api.Services
             }
         }
 
-        public override Task<FindResponse> Find(FindRequest request, ServerCallContext context)
+        public override async Task<FindResponse> Find(FindRequest request, ServerCallContext context)
         {
-            var schools = _repository.Get(request.Input).Result;
+            var schools = await _mediator.Send(new SearchSchoolModel
+            {
+                Input = request.Input
+            });
+            
             var response = new FindResponse();
 
             foreach (var school in schools)
@@ -50,7 +61,7 @@ namespace Vulder.Search.Api.Services
                 });
             }
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

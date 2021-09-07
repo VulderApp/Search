@@ -28,30 +28,48 @@ namespace Vulder.Search.Test
         [Fact]
         public async void CreateSchoolDocument()
         {
-            var school = new School(SchoolName, "https://example.com", "xyz@xyz.pl");
+            var school = new School
+            {
+                Name = SchoolName,
+                Url = "https://example.com",
+                GuardianEmail = "xyz@xyz.pl"
+            };
+            
             school.GenerateId();
             await _repository.Create(school);
             var result = await _repository.Get(SchoolName);
+            
             Assert.NotEmpty(result);
         }
         
         [Fact]
         public async void UpdateSchoolDocument()
         {
-            var schoolEnt = new School(SchoolName, "https://example.com", "xyz@xyz.pl");
+            var schoolEnt = new School
+            {
+                Name = SchoolName,
+                Url = "https://example.com",
+                GuardianEmail = "xyz@xyz.pl"
+            };
             schoolEnt.GenerateId();
             await _repository.Create(schoolEnt);
 
             schoolEnt.Name = UpdateSchoolName;
             await _repository.Update(schoolEnt);
             var result = await _repository.Get("ZSPnr2");
+            
             Assert.Equal(schoolEnt.Name, result[0].Name);
         }
 
         [Fact]
         public async void DeleteSchoolDocument()
         {
-            var schoolEnt = new School(SchoolName, "https://example.com", "xyz@xyz.pl");
+            var schoolEnt = new School
+            { 
+                Name = SchoolName,
+                Url = "https://example.com",
+                GuardianEmail = "xyz@xyz.pl"
+            };
             schoolEnt.GenerateId();
             await _repository.Create(schoolEnt);
             await _repository.Delete(schoolEnt.Id);

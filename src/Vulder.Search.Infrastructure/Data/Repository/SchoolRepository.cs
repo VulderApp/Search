@@ -17,7 +17,7 @@ namespace Vulder.Search.Infrastructure.Data.Repository
 
         public Task<List<School>> Get(string input)
             => Task.FromResult(_schoolCollection.Find(Builders<School>.Filter.Text(input)).Limit(10).ToList());
-
+        
         public async Task Create(School school)
         {
             await _schoolCollection.InsertOneAsync(school);

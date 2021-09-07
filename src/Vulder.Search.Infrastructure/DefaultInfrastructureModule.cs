@@ -6,6 +6,7 @@ using MediatR.Pipeline;
 using Vulder.Search.Core.ProjectAggregate.School;
 using Vulder.Search.Infrastructure.Data;
 using Vulder.Search.Infrastructure.Data.Repository;
+using Vulder.Search.Infrastructure.Handler.School;
 using Module = Autofac.Module;
 
 namespace Vulder.Search.Infrastructure
@@ -17,18 +18,24 @@ namespace Vulder.Search.Infrastructure
         public DefaultInfrastructureModule()
         {
             _assemblies.Add(Assembly.GetAssembly(typeof(School)));
+            _assemblies.Add(Assembly.GetAssembly(typeof(FindSchoolRequestHandler)));
+            _assemblies.Add(Assembly.GetAssembly(typeof(SchoolCreateRequestHandler)));
         }
         
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SchoolRepository>()
-                .As<ISchoolRepository>().InstancePerLifetimeScope();
+                .As<ISchoolRepository>()
+                .InstancePerLifetimeScope();
+            
             builder.RegisterType<Mediator>()
-                .As<IMediator>().InstancePerLifetimeScope();
+                .As<IMediator>()
+                .InstancePerLifetimeScope();
 
             builder.Register<ServiceFactory>(context =>
             {
-                return t => context.Resolve<IComponentContext>().Resolve(t);
+                var c = context.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
             });
             
             var mediatROpenTypes = new[]
