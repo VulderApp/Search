@@ -31,7 +31,9 @@ namespace Vulder.Search.Test
             var school = new School
             {
                 Name = SchoolName,
-                Url = "https://example.com",
+                TimetableUrl = "http://example.com/timetable",
+                SchoolUrl = "http://example.com",
+                GuardianId = Guid.NewGuid(),
                 GuardianEmail = "xyz@xyz.pl"
             };
             
@@ -48,7 +50,9 @@ namespace Vulder.Search.Test
             var schoolEnt = new School
             {
                 Name = SchoolName,
-                Url = "https://example.com",
+                TimetableUrl = "http://example.com/timetable",
+                SchoolUrl = "http://example.com",
+                GuardianId = Guid.NewGuid(),
                 GuardianEmail = "xyz@xyz.pl"
             };
             schoolEnt.GenerateId();
@@ -67,7 +71,9 @@ namespace Vulder.Search.Test
             var schoolEnt = new School
             { 
                 Name = SchoolName,
-                Url = "https://example.com",
+                TimetableUrl = "http://example.com/timetable",
+                SchoolUrl = "http://example.com",
+                GuardianId = Guid.NewGuid(),
                 GuardianEmail = "xyz@xyz.pl"
             };
             schoolEnt.GenerateId();

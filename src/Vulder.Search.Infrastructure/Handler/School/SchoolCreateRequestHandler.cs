@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Server.HttpSys;
 using Vulder.Search.Core.Models;
 using Vulder.Search.Infrastructure.Data.Repository;
 
@@ -20,7 +22,9 @@ namespace Vulder.Search.Infrastructure.Handler.School
             await _repository.Create(new Core.ProjectAggregate.School.School
             {
                 Name = request.Name,
-                Url = request.Url,
+                TimetableUrl = request.TimetableUrl,
+                SchoolUrl = request.SchoolUrl,
+                GuardianId = Guid.Parse(request.RequesterId),
                 GuardianEmail = request.RequesterEmail
             });
             
