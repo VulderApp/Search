@@ -75,7 +75,7 @@ namespace Vulder.Search.Api.Services
 
             return new DeleteResponse
             {
-                IsDeleted = true
+                IsDeleted = response
             };
         }
     }
