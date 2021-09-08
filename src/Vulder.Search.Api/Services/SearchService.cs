@@ -3,7 +3,6 @@ using Grpc.Core;
 using MediatR;
 using Vulder.Protos.Search;
 using Vulder.Search.Core.Models;
-using Vulder.Search.Core.ProjectAggregate.School;
 using Vulder.Search.Infrastructure.Data.Repository;
 
 namespace Vulder.Search.Api.Services
@@ -24,20 +23,22 @@ namespace Vulder.Search.Api.Services
                 await _mediator.Send(new CreateSchoolModel
                 {
                     Name = request.Name,
-                    Url = request.Url,
+                    TimetableUrl = request.TimetableUrl,
+                    SchoolUrl = request.SchoolUrl,
+                    RequesterId = request.RequesterId,
                     RequesterEmail = request.RequesterEmail
                 });
 
                 return new CreateResponse
                 {
-                    Message = "Ok"
+                    IsCreated = true
                 };
             }
             catch
             {
                 return new CreateResponse
                 {
-                    Message = "Error"
+                    IsCreated = false
                 };
             }
         }
@@ -56,8 +57,7 @@ namespace Vulder.Search.Api.Services
                 response.Schools.Add(new FindResponse.Types.School
                 {
                     Id = school.Id.ToString(),
-                    Name = school.Name,
-                    Url = school.Url
+                    Name = school.Name
                 });
             }
 

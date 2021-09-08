@@ -10,7 +10,13 @@ namespace Vulder.Search.Core.ProjectAggregate.School
         public string Name { get; set; }
         
         [BsonRequired]
-        public string Url { get; set; }
+        public string TimetableUrl { get; set; }
+        
+        [BsonRequired]
+        public string SchoolUrl { get; set; }
+        
+        [BsonRequired]
+        public Guid GuardianId { get; set; }
         
         [BsonRequired]
         public string GuardianEmail { get; set; }

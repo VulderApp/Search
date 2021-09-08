@@ -14,7 +14,9 @@ namespace Vulder.Search.Test
             _school = new School
             {
                 Name = "ZSPnr1",
-                Url = "http://example.com",
+                TimetableUrl = "http://example.com/timetable",
+                SchoolUrl = "http://example.com",
+                GuardianId = Guid.NewGuid(),
                 GuardianEmail = "xyz@example.com"
             };
         }
