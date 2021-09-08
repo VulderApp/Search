@@ -18,7 +18,7 @@ namespace Vulder.Search.Infrastructure.Handler.School
 
         public Task<List<Core.ProjectAggregate.School.School>> Handle(SearchSchoolModel request, CancellationToken cancellationToken)
         {
-            return _repository.Get(request.Input);
+            return _repository.Find(request.Input);
         }
     }
 }

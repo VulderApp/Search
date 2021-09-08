@@ -16,9 +16,15 @@ namespace Vulder.Search.Infrastructure.Data.Repository
             _schoolCollection = context.SchoolsCollection;
         }
 
-        public Task<List<School>> Get(string input)
+        public Task<List<School>> Find(string input)
             => Task.FromResult(_schoolCollection.Find(Builders<School>.Filter.Text(input)).Limit(10).ToList());
-        
+
+        public async Task<School> Get(Guid id)
+        {
+            var filter = Builders<School>.Filter.Eq(s => s.Id == id, true);
+            return await _schoolCollection.Find(filter).FirstOrDefaultAsync();
+        }
+
         public async Task Create(School school)
         {
             await _schoolCollection.InsertOneAsync(school);

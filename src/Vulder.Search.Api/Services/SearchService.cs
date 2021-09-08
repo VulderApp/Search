@@ -70,12 +70,30 @@ namespace Vulder.Search.Api.Services
         {
             var response = await _mediator.Send(new DeleteSchoolModel
             {
-                SchoolId = Guid.Parse(request.Guid)
+                SchoolId = Guid.Parse(request.SchoolId)
             });
 
             return new DeleteResponse
             {
                 IsDeleted = response
+            };
+        }
+
+        public override async Task<UpdateResponse> Update(UpdateRequest request, ServerCallContext context)
+        {
+            var response = await _mediator.Send(new UpdateSchoolModel
+            {
+                Id = Guid.Parse(request.SchoolId),
+                SchoolName = request.Name,
+                SchoolUrl = request.SchoolUrl,
+                TimetableUrl = request.TimetableUrl,
+                UserEmail = request.UserEmail,
+                UserId = Guid.Parse(request.UserId)
+            });
+            
+            return new UpdateResponse
+            {
+                IsUpdated = response
             };
         }
     }

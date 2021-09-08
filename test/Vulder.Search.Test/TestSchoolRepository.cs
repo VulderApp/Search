@@ -39,7 +39,7 @@ namespace Vulder.Search.Test
             
             school.GenerateId();
             await _repository.Create(school);
-            var result = await _repository.Get(SchoolName);
+            var result = await _repository.Find(SchoolName);
             
             Assert.NotEmpty(result);
         }
@@ -60,7 +60,7 @@ namespace Vulder.Search.Test
 
             schoolEnt.Name = UpdateSchoolName;
             await _repository.Update(schoolEnt);
-            var result = await _repository.Get("ZSPnr2");
+            var result = await _repository.Find("ZSPnr2");
             
             Assert.Equal(schoolEnt.Name, result[0].Name);
         }
