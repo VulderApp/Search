@@ -20,8 +20,11 @@ namespace Vulder.Search.Core.ProjectAggregate.School
         
         [BsonRequired]
         public string GuardianEmail { get; set; }
-        
-        public void GenerateId()
-            => Id = Guid.NewGuid();
+
+        public School GenerateId()
+        {
+            Id = Guid.NewGuid();
+            return this;
+        }
     }
 }
