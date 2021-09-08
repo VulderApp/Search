@@ -1,9 +1,11 @@
+using System;
 using System.Threading.Tasks;
 using Grpc.Core;
 using MediatR;
 using Vulder.Protos.Search;
 using Vulder.Search.Core.Models;
 using Vulder.Search.Infrastructure.Data.Repository;
+using Vulder.Search.Infrastructure.Handler.School;
 
 namespace Vulder.Search.Api.Services
 {
@@ -62,6 +64,19 @@ namespace Vulder.Search.Api.Services
             }
 
             return response;
+        }
+
+        public override async Task<DeleteResponse> Delete(DeleteRequest request, ServerCallContext context)
+        {
+            var response = await _mediator.Send(new DeleteSchoolModel
+            {
+                SchoolId = Guid.Parse(request.Guid)
+            });
+
+            return new DeleteResponse
+            {
+                IsDeleted = true
+            };
         }
     }
 }
