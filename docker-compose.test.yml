@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - vulder-school-form-db:/data/db
+      - vulder-search-db:/data/db
 volumes:
   vulder-search-db:
     external: true
