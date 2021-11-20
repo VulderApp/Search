@@ -18,7 +18,7 @@ public class AddSchoolController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpPut]
+    [HttpPost]
     public async Task<IActionResult> AddSchool([FromBody] AddSchoolModel addSchoolModel)
     {
         await _mediator.Send(
