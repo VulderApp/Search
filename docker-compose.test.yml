@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:5.0.3
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - vulder-school-form-db:/data/db
+volumes:
+  vulder-search-db:
+    external: true
