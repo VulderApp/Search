@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vulder.Search.Core\Vulder.Search.Core.csproj" />
+    <ProjectReference Include="..\Vulder.Search.Infrastructure\Vulder.Search.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
