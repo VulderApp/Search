@@ -27,7 +27,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./test/Vulder.Search.Test/coverage.opencover.xml
+          files: ./test/Vulder.Search.IntegrationTests/coverage.opencover.xml
           env_vars: OS,DOTNET
           name: codecov-search
           flags: xUnit.net

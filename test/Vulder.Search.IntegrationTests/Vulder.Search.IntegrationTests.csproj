@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fixtures" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\Vulder.Search.Api\Vulder.Search.Api.csproj" />
     <ProjectReference Include="..\..\src\Vulder.Search.Core\Vulder.Search.Core.csproj" />
   </ItemGroup>
