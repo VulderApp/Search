@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.3.0"/>
-        <PackageReference Include="MediatR" Version="9.0.0"/>
+        <PackageReference Include="Autofac" Version="6.3.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Vulder.School.Core\Vulder.School.Core.csproj"/>
-        <ProjectReference Include="..\Vulder.School.Infrastructure\Vulder.School.Infrastructure.csproj"/>
+        <ProjectReference Include="..\Vulder.School.Core\Vulder.School.Core.csproj" />
+        <ProjectReference Include="..\Vulder.School.Infrastructure\Vulder.School.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
