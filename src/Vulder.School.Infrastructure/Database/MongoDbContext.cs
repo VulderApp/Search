@@ -10,8 +10,6 @@ public class MongoDbContext
     {
         var client = new MongoClient();
         var database = client.GetDatabase("Vulder");
-        Schools = database.GetCollection<Search.Core.ProjectAggregate.School.School>("Schools");
+        Schools = database.GetCollection<Core.ProjectAggregate.School.School>("Schools");
     }
-
-    public IMongoCollection<School.Core.ProjectAggregate.School.School> Schools { get; }
 }

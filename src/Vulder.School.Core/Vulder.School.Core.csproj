@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Vulder.Search.Core</RootNamespace>
+        <RootNamespace>Vulder.School.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

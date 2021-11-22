@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Vulder.Search.Core.Models;
+using Vulder.School.Core.Models;
 using Xunit;
 
 namespace Vulder.School.IntegrationTests.Controllers.School;

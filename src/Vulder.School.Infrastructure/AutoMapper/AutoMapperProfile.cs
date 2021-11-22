@@ -1,5 +1,5 @@
 using AutoMapper;
-using Vulder.Search.Core.Models;
+using Vulder.School.Core.Models;
 
 namespace Vulder.School.Infrastructure.AutoMapper;
 
@@ -7,6 +7,6 @@ public class AutoMapperProfile : Profile
 {
     public AutoMapperProfile()
     {
-        CreateMap<AddSchoolModel, Search.Core.ProjectAggregate.School.School>();
+        CreateMap<AddSchoolModel, Core.ProjectAggregate.School.School>();
     }
 }

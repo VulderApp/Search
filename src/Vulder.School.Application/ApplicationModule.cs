@@ -13,7 +13,7 @@ public class ApplicationModule : Module
 
     public ApplicationModule()
     {
-        _assemblies.Add(Assembly.GetAssembly(typeof(Search.Core.ProjectAggregate.School.School)));
+        _assemblies.Add(Assembly.GetAssembly(typeof(Core.ProjectAggregate.School.School)));
         _assemblies.Add(Assembly.GetAssembly(typeof(AddSchoolRequestHandler)));
     }
 

@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Vulder.Search.Core.Models;
+using Vulder.School.Core.Models;
 
 namespace Vulder.School.Api.Controllers.School;
 
@@ -22,7 +22,7 @@ public class AddSchoolController : ControllerBase
     public async Task<IActionResult> AddSchool([FromBody] AddSchoolModel addSchoolModel)
     {
         await _mediator.Send(
-            _mapper.Map<Search.Core.ProjectAggregate.School.School>(addSchoolModel)
+            _mapper.Map<Core.ProjectAggregate.School.School>(addSchoolModel)
         );
 
         return Ok();
