@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Vulder.SharedKernel" Version="0.1.6"/>
+        <PackageReference Include="Vulder.SharedKernel" Version="0.1.6" />
     </ItemGroup>
 
 </Project>
