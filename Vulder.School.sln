@@ -5,19 +5,19 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6E1CFBF-2A24-4A45-9C21-9D6FAB58B0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.Api", "src\Vulder.Search.Api\Vulder.Search.Api.csproj", "{2C0F445B-9E0E-40F8-BA9B-B892A0815E9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.Api", "src\Vulder.School.Api\Vulder.School.Api.csproj", "{2C0F445B-9E0E-40F8-BA9B-B892A0815E9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.Application", "src\Vulder.Search.Application\Vulder.Search.Application.csproj", "{C0B29C4D-D1C3-4B6E-9C65-C4DC734CC25F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.Application", "src\Vulder.School.Application\Vulder.School.Application.csproj", "{C0B29C4D-D1C3-4B6E-9C65-C4DC734CC25F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.Core", "src\Vulder.Search.Core\Vulder.Search.Core.csproj", "{2BD93664-98C7-4483-A1BB-BE47E89B144E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.Core", "src\Vulder.School.Core\Vulder.School.Core.csproj", "{2BD93664-98C7-4483-A1BB-BE47E89B144E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.Infrastructure", "src\Vulder.Search.Infrastructure\Vulder.Search.Infrastructure.csproj", "{8005E233-24B5-45FA-836C-00E8E35E5B39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.Infrastructure", "src\Vulder.School.Infrastructure\Vulder.School.Infrastructure.csproj", "{8005E233-24B5-45FA-836C-00E8E35E5B39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9FFE670E-DF84-4006-B603-F88901A5A126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.IntegrationTests", "test\Vulder.Search.IntegrationTests\Vulder.Search.IntegrationTests.csproj", "{47146845-82C6-4884-A74A-7BCC772BA6C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.IntegrationTests", "test\Vulder.School.IntegrationTests\Vulder.School.IntegrationTests.csproj", "{47146845-82C6-4884-A74A-7BCC772BA6C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.Search.UnitTests", "test\Vulder.Search.UnitTests\Vulder.Search.UnitTests.csproj", "{589ADA42-D860-4EB4-A9B5-DC95D03E2C9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vulder.School.UnitTests", "test\Vulder.School.UnitTests\Vulder.School.UnitTests.csproj", "{589ADA42-D860-4EB4-A9B5-DC95D03E2C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

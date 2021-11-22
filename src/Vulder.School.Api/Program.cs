@@ -1,7 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Vulder.Search.Application;
-using Vulder.Search.Infrastructure;
+using Vulder.School.Application;
+using Vulder.School.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,4 +30,6 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+public partial class Program
+{
+}

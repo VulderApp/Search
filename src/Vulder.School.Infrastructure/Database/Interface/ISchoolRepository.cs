@@ -1,5 +1,3 @@
-using Vulder.Search.Core.ProjectAggregate.School;
-
 namespace Vulder.School.Infrastructure.Database.Interface;
 
 public interface ISchoolRepository

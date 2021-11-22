@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.3.0" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="6.3.0"/>
+        <PackageReference Include="MediatR" Version="9.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Vulder.Search.Core\Vulder.Search.Core.csproj" />
-    <ProjectReference Include="..\Vulder.Search.Infrastructure\Vulder.Search.Infrastructure.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Vulder.School.Core\Vulder.School.Core.csproj"/>
+        <ProjectReference Include="..\Vulder.School.Infrastructure\Vulder.School.Infrastructure.csproj"/>
+    </ItemGroup>
 
 </Project>

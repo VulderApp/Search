@@ -1,6 +1,5 @@
 using AutoMapper;
 using Vulder.Search.Core.Models;
-using Vulder.Search.Core.ProjectAggregate.School;
 
 namespace Vulder.School.Infrastructure.AutoMapper;
 
