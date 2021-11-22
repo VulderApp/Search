@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vulder.Search.Application\Vulder.Search.Application.csproj" />
+    <ProjectReference Include="..\Vulder.School.Application\Vulder.School.Application.csproj" />
   </ItemGroup>
 
 </Project>

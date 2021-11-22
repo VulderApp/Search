@@ -11,7 +11,6 @@ public class InfrastructureModule : Module
     protected override void Load(ContainerBuilder builder)
     {
         builder.RegisterModule(new DatabaseModule());
-        
         builder.Register(_ => new MapperConfiguration(c => { c.AddProfile<AutoMapperProfile>(); }));
         builder.Register(c =>
             {
