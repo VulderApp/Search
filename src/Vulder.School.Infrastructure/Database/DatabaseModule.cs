@@ -1,6 +1,7 @@
 using Autofac;
 using Vulder.School.Infrastructure.Database.Interface;
 using Vulder.School.Infrastructure.Database.Repository;
+using Module = Autofac.Module;
 
 namespace Vulder.School.Infrastructure.Database;
 

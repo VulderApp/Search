@@ -4,6 +4,8 @@ namespace Vulder.School.Infrastructure.Database;
 
 public class MongoDbContext
 {
+    public IMongoCollection<School.Core.ProjectAggregate.School.School> Schools { get; }
+
     public MongoDbContext()
     {
         var client = new MongoClient();
@@ -11,5 +13,5 @@ public class MongoDbContext
         Schools = database.GetCollection<Search.Core.ProjectAggregate.School.School>("Schools");
     }
 
-    public IMongoCollection<Search.Core.ProjectAggregate.School.School> Schools { get; }
+    public IMongoCollection<School.Core.ProjectAggregate.School.School> Schools { get; }
 }
