@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDefaultCorsPolicy();
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuild =>
 {
     containerBuild.RegisterModule(new ApplicationModule());
@@ -21,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CORS");
 
 app.UseHttpsRedirection();
 
