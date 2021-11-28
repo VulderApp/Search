@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.3.0" />
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="6.3.0"/>
+        <PackageReference Include="AutoMapper" Version="10.1.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0"/>
+        <PackageReference Include="MongoDB.Driver" Version="2.13.2"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Vulder.School.Core\Vulder.School.Core.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Vulder.School.Core\Vulder.School.Core.csproj"/>
+    </ItemGroup>
 
 </Project>

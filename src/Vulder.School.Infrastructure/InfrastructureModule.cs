@@ -2,7 +2,6 @@ using Autofac;
 using AutoMapper;
 using Vulder.School.Infrastructure.AutoMapper;
 using Vulder.School.Infrastructure.Database;
-using Module = Autofac.Module;
 
 namespace Vulder.School.Infrastructure;
 

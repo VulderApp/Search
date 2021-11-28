@@ -10,7 +10,7 @@ namespace Vulder.School.Api.Controllers.School;
 public class FindSchoolsController : ControllerBase
 {
     private readonly IMediator _mediator;
-    
+
     public FindSchoolsController(IMediator mediator)
     {
         _mediator = mediator;
@@ -23,7 +23,7 @@ public class FindSchoolsController : ControllerBase
         {
             Input = input
         });
-        
+
         return Ok(result.Select(x => new FindSchoolsDto
         {
             Id = x.Id,
