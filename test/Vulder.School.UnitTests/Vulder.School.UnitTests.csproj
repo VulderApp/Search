@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Vulder.School.Core\Vulder.School.Core.csproj" />
+  </ItemGroup>
+
 </Project>
