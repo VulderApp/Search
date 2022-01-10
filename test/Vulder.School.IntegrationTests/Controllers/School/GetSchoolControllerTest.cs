@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Vulder.School.Core.Models;
 using Vulder.School.Core.ProjectAggregate.School.Dtos;
+using Vulder.School.IntegrationTests.Fixtures;
 using Xunit;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 

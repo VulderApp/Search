@@ -1,10 +1,11 @@
 using System;
 using System.IO;
+using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
-namespace Vulder.School.IntegrationTests;
+namespace Vulder.School.IntegrationTests.Fixtures;
 
 public class WebServerFactory : WebApplicationFactory<Program>
 {
@@ -18,5 +19,12 @@ public class WebServerFactory : WebApplicationFactory<Program>
             configurationBuilder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"))
                 .AddEnvironmentVariables();
         });
+    }
+
+    protected override void ConfigureClient(HttpClient client)
+    {
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {FakeJwtTokenGenerator.GetToken()}");
+        
+        base.ConfigureClient(client);
     }
 }
