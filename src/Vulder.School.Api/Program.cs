@@ -2,12 +2,14 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Vulder.School.Application;
 using Vulder.School.Infrastructure;
+using Vulder.SharedKernel;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDefaultJwtConfiguration(builder.Configuration);
 builder.Services.AddDefaultCorsPolicy();
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuild =>
@@ -27,6 +29,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CORS");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
