@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDefaultJwtConfiguration(builder.Configuration);
+builder.Services.AddValidators();
 builder.Services.AddDefaultCorsPolicy();
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuild =>
