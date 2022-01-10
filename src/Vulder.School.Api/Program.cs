@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Vulder.School.Application;
 using Vulder.School.Infrastructure;
 using Vulder.SharedKernel;
+using Vulder.SharedKernel.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseCors("CORS");
 
