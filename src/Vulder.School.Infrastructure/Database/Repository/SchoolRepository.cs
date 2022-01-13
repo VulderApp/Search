@@ -31,4 +31,11 @@ public class SchoolRepository : ISchoolRepository
         return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input)).Limit(10)
             .ToListAsync();
     }
+
+    public async Task<bool> Update(Core.ProjectAggregate.School.School school)
+    {
+        var result = await Schools.ReplaceOneAsync(x => x.Id == school.Id, school);
+
+        return result.IsAcknowledged;
+    }
 }

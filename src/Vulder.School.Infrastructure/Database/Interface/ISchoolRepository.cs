@@ -5,4 +5,5 @@ public interface ISchoolRepository
     Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input);
     Task<Core.ProjectAggregate.School.School> GetSchoolById(Guid schoolId);
     Task Create(Core.ProjectAggregate.School.School school);
+    Task<bool> Update(Core.ProjectAggregate.School.School school);
 }

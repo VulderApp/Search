@@ -12,6 +12,6 @@ public static class StartupExtensions
     {
         services.AddFluentValidation();
         
-        services.AddTransient<IValidator<AddSchoolModel>, AddSchoolModelValidator>();
+        services.AddTransient<IValidator<SchoolModel>, SchoolModelValidator>();
     }
 }
