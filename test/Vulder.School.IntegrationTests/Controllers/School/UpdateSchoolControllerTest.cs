@@ -4,9 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Vulder.School.Core.Models;
+using Vulder.School.Core.ProjectAggregate.School.Dtos;
 using Vulder.School.IntegrationTests.Fixtures;
 using Xunit;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Vulder.School.IntegrationTests.Controllers.School;
 
@@ -36,9 +36,10 @@ public class UpdateSchoolControllerTest
             TimetableUrl = "http://example.com/timetable"
         };
         
-        httpContent = new StringContent(JsonSerializer.Serialize(updateSchoolModel), Encoding.UTF8, "application/json");
+        httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8, "application/json");
         using var updateResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
         
         Assert.Equal(HttpStatusCode.OK, updateResponse.StatusCode);
+        Assert.True(JsonConvert.DeserializeObject<UpdateDto>(await updateResponse.Content.ReadAsStringAsync())!.Result);
     }
 }
