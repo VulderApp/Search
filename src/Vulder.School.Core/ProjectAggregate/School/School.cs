@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Vulder.School.Core.ProjectAggregate.School;
 
-public class School : IRequest<bool>
+public class School : IRequest<School>
 {
     [BsonId]
     [BsonElement("id")]
