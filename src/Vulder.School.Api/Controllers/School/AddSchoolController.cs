@@ -23,10 +23,10 @@ public class AddSchoolController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddSchool([FromBody] AddSchoolModel addSchoolModel)
     {
-        await _mediator.Send(
+        var school = await _mediator.Send(
             _mapper.Map<Core.ProjectAggregate.School.School>(addSchoolModel)
         );
 
-        return Ok();
+        return Ok(school);
     }
 }
