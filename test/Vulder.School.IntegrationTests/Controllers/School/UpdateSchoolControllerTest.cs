@@ -24,7 +24,7 @@ public class UpdateSchoolControllerTest
 
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
-        var httpContent = new StringContent(JsonSerializer.Serialize(schoolModel), Encoding.UTF8, "application/json");
+        var httpContent = new StringContent(JsonConvert.SerializeObject(schoolModel), Encoding.UTF8, "application/json");
         using var addResponse = await client.PostAsync("/school/AddSchool", httpContent);
         var schoolId = JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(await addResponse.Content.ReadAsStringAsync())!.Id;
 
