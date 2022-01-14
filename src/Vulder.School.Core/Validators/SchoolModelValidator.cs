@@ -3,9 +3,9 @@ using Vulder.School.Core.Models;
 
 namespace Vulder.School.Core.Validators;
 
-public class AddSchoolModelValidator : AbstractValidator<AddSchoolModel>
+public class SchoolModelValidator : AbstractValidator<SchoolModel>
 {
-    public AddSchoolModelValidator()
+    public SchoolModelValidator()
     {
         RuleFor(x => x.Name)
             .NotNull()

@@ -5,19 +5,19 @@ using Xunit;
 
 namespace Vulder.Search.UnitTests.Core.Validators;
 
-public class AddSchoolModelValidatorTest
+public class SchoolModelValidatorTest
 {
     [Fact]
     public void ValidateSchoolModel_Correct()
     {
-        var schoolModel = new AddSchoolModel
+        var schoolModel = new SchoolModel
         {
             Name = "ZSP 2 w Warszawie",
             SchoolUrl = "http://example.com",
             TimetableUrl = "http://example.com/timetable"
         };
 
-        var result = new AddSchoolModelValidator().TestValidate(schoolModel).IsValid;
+        var result = new SchoolModelValidator().TestValidate(schoolModel).IsValid;
         
         Assert.True(result);
     }
@@ -25,14 +25,14 @@ public class AddSchoolModelValidatorTest
     [Fact]
     public void ValidateSchoolModel_NotValid()
     {
-        var schoolModel = new AddSchoolModel
+        var schoolModel = new SchoolModel
         {
             Name = "",
             SchoolUrl = "http://example.com",
             TimetableUrl = "http://example.com"
         };
 
-        var result = new AddSchoolModelValidator().TestValidate(schoolModel).IsValid;
+        var result = new SchoolModelValidator().TestValidate(schoolModel).IsValid;
         
         Assert.False(result);
     }
