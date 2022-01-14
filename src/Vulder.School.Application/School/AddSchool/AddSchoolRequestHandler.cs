@@ -3,7 +3,7 @@ using Vulder.School.Infrastructure.Database.Interface;
 
 namespace Vulder.School.Application.School.AddSchool;
 
-public class AddSchoolRequestHandler : IRequestHandler<Core.ProjectAggregate.School.School, bool>
+public class AddSchoolRequestHandler : IRequestHandler<Core.ProjectAggregate.School.School, Core.ProjectAggregate.School.School>
 {
     private readonly ISchoolRepository _schoolRepository;
 
@@ -12,11 +12,11 @@ public class AddSchoolRequestHandler : IRequestHandler<Core.ProjectAggregate.Sch
         _schoolRepository = schoolRepository;
     }
 
-    public async Task<bool> Handle(Core.ProjectAggregate.School.School request,
+    public async Task<Core.ProjectAggregate.School.School> Handle(Core.ProjectAggregate.School.School request,
         CancellationToken cancellationToken)
     {
-        await _schoolRepository.Create(request);
+        await _schoolRepository.Create(request.GenerateId());
 
-        return true;
+        return request;
     }
 }
