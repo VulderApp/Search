@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Vulder.School.IntegrationTests.Controllers.School;
 
-public class FindSchoolsControllerTets
+public class FindSchoolsControllerTest
 {
     [Fact]
     public async void GET_Responds_1_Model()
@@ -30,6 +30,6 @@ public class FindSchoolsControllerTets
         using var findResponse = await client.GetAsync("school/FindSchools?input=SP");
         
         Assert.Equal(HttpStatusCode.OK, findResponse.StatusCode);
-        Assert.Single(JsonSerializer.Deserialize<List<FindSchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ?? throw new InvalidOperationException());
+        Assert.Single(JsonSerializer.Deserialize<List<SchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ?? throw new InvalidOperationException());
     }
 }

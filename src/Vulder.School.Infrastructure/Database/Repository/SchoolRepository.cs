@@ -26,6 +26,15 @@ public class SchoolRepository : ISchoolRepository
         return await Schools.Find(x => x.Id == schoolId).FirstOrDefaultAsync();
     }
 
+    public Task<List<Core.ProjectAggregate.School.School>> GetSchoolsWithPagination(int page)
+    {
+        var schools = Schools.AsQueryable()
+            .Skip((page - 1) * 20)
+            .ToList();
+
+        return Task.FromResult(schools);
+    }
+
     public async Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input)
     {
         return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input)).Limit(10)

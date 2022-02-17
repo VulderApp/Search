@@ -24,7 +24,7 @@ public class FindSchoolsController : ControllerBase
             Input = input
         });
 
-        return Ok(result.Select(x => new FindSchoolsDto
+        return Ok(result.Select(x => new SchoolsDto
         {
             Id = x.Id,
             Name = x.Name
