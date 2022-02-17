@@ -25,6 +25,6 @@ public class SchoolsController : ControllerBase
             Page = page
         });
 
-        return Ok();
+        return Ok(result);
     }
 }

@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Vulder.School.IntegrationTests.Controllers.School;
 
-public class FindSchoolsControllerTets
+public class FindSchoolsControllerTest
 {
     [Fact]
     public async void GET_Responds_1_Model()
