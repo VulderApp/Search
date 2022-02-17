@@ -30,6 +30,6 @@ public class FindSchoolsControllerTets
         using var findResponse = await client.GetAsync("school/FindSchools?input=SP");
         
         Assert.Equal(HttpStatusCode.OK, findResponse.StatusCode);
-        Assert.Single(JsonSerializer.Deserialize<List<FindSchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ?? throw new InvalidOperationException());
+        Assert.Single(JsonSerializer.Deserialize<List<SchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ?? throw new InvalidOperationException());
     }
 }
