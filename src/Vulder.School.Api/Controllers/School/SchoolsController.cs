@@ -20,7 +20,7 @@ public class SchoolsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Schools([FromQuery] int page = 1)
     {
-        var result = _mediator.Send(new SchoolsModel
+        var result = await _mediator.Send(new SchoolsModel
         {
             Page = page
         });
