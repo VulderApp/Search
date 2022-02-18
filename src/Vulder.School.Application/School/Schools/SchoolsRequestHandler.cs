@@ -16,7 +16,7 @@ public class SchoolsRequestHandler : IRequestHandler<SchoolsModel, SchoolsDto>
     
     public async Task<SchoolsDto> Handle(SchoolsModel request, CancellationToken cancellationToken)
     {
-        var pages = await _schoolRepository.GetSchoolCount();
+        var pages = await _schoolRepository.GetSchoolDocumentsCount();
         var schools = await _schoolRepository.GetSchoolsWithPagination(request.Page);
 
         var schoolItemsDto = schools.Select(x => new SchoolItemDto

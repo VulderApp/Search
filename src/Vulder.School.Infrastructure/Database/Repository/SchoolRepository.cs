@@ -28,7 +28,7 @@ public class SchoolRepository : ISchoolRepository
         return await Schools.Find(x => x.Id == schoolId).FirstOrDefaultAsync();
     }
 
-    public async Task<long> GetSchoolCount()
+    public async Task<long> GetSchoolDocumentsCount()
     {
         return (await Schools.CountDocumentsAsync(_ => true) / DocumentLimit) + 1;
     }
