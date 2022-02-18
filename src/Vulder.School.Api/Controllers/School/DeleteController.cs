@@ -11,7 +11,7 @@ namespace Vulder.School.Api.Controllers.School;
 public class DeleteController : ControllerBase
 {
     private readonly IMediator _mediator;
-    
+
     public DeleteController(IMediator mediator)
     {
         _mediator = mediator;

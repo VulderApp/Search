@@ -12,7 +12,7 @@ public class SchoolsControllerTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
         using var response = await client.GetAsync("school/Schools?page=1");
-        
+
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }

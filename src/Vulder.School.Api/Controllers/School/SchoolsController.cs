@@ -11,7 +11,7 @@ namespace Vulder.School.Api.Controllers.School;
 public class SchoolsController : ControllerBase
 {
     private readonly IMediator _mediator;
-    
+
     public SchoolsController(IMediator mediator)
     {
         _mediator = mediator;

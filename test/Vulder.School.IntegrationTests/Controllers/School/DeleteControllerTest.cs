@@ -24,19 +24,23 @@ public class DeleteControllerTest
 
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
-        
-        var httpContent = new StringContent(JsonConvert.SerializeObject(schoolModel), Encoding.UTF8, "application/json");
+
+        var httpContent =
+            new StringContent(JsonConvert.SerializeObject(schoolModel), Encoding.UTF8, "application/json");
         using var addResponse = await client.PostAsync("/school/AddSchool", httpContent);
-        var schoolId = JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(await addResponse.Content.ReadAsStringAsync())!.Id;
+        var schoolId =
+            JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(
+                await addResponse.Content.ReadAsStringAsync())!.Id;
 
         var updateSchoolModel = new DeleteSchoolModel
         {
-            Id = schoolId,
+            Id = schoolId
         };
-        
-        httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8, "application/json");
+
+        httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8,
+            "application/json");
         using var deleteResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
-        
+
         Assert.Equal(HttpStatusCode.OK, deleteResponse.StatusCode);
         Assert.True(JsonConvert.DeserializeObject<ResultDto>(await deleteResponse.Content.ReadAsStringAsync())!.Result);
     }

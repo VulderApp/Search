@@ -8,12 +8,12 @@ namespace Vulder.School.Application.School.Schools;
 public class SchoolsRequestHandler : IRequestHandler<SchoolsModel, SchoolsDto>
 {
     private readonly ISchoolRepository _schoolRepository;
-    
+
     public SchoolsRequestHandler(ISchoolRepository schoolRepository)
     {
         _schoolRepository = schoolRepository;
     }
-    
+
     public async Task<SchoolsDto> Handle(SchoolsModel request, CancellationToken cancellationToken)
     {
         var pages = await _schoolRepository.GetSchoolDocumentsCount();
