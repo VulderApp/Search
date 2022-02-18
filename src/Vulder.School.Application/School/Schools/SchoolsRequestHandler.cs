@@ -5,7 +5,7 @@ using Vulder.School.Infrastructure.Database.Interface;
 
 namespace Vulder.School.Application.School.Schools;
 
-public class SchoolsRequestHandler : IRequestHandler<SchoolsModel, List<SchoolsDto>>
+public class SchoolsRequestHandler : IRequestHandler<SchoolsModel, SchoolsDto>
 {
     private readonly ISchoolRepository _schoolRepository;
     
@@ -14,14 +14,21 @@ public class SchoolsRequestHandler : IRequestHandler<SchoolsModel, List<SchoolsD
         _schoolRepository = schoolRepository;
     }
     
-    public async Task<List<SchoolsDto>> Handle(SchoolsModel request, CancellationToken cancellationToken)
+    public async Task<SchoolsDto> Handle(SchoolsModel request, CancellationToken cancellationToken)
     {
+        var pages = await _schoolRepository.GetSchoolCount();
         var schools = await _schoolRepository.GetSchoolsWithPagination(request.Page);
 
-        return schools.Select(x => new SchoolsDto
+        var schoolItemsDto = schools.Select(x => new SchoolItemDto
         {
             Id = x.Id,
             Name = x.Name
         }).ToList();
+
+        return new SchoolsDto
+        {
+            Schools = schoolItemsDto,
+            Pages = pages
+        };
     }
 }

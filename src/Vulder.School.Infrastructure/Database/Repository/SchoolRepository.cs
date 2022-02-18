@@ -5,6 +5,8 @@ namespace Vulder.School.Infrastructure.Database.Repository;
 
 public class SchoolRepository : ISchoolRepository
 {
+    private const int DocumentLimit = 20;
+    
     public SchoolRepository(MongoDbContext context)
     {
         Schools = context.Schools;
@@ -26,10 +28,15 @@ public class SchoolRepository : ISchoolRepository
         return await Schools.Find(x => x.Id == schoolId).FirstOrDefaultAsync();
     }
 
+    public async Task<long> GetSchoolCount()
+    {
+        return (await Schools.CountDocumentsAsync(_ => true) / DocumentLimit) + 1;
+    }
+
     public Task<List<Core.ProjectAggregate.School.School>> GetSchoolsWithPagination(int page)
     {
         var schools = Schools.AsQueryable()
-            .Skip((page - 1) * 20)
+            .Skip((page - 1) * DocumentLimit)
             .ToList();
 
         return Task.FromResult(schools);
