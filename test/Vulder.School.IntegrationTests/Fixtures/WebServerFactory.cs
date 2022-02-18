@@ -24,7 +24,7 @@ public class WebServerFactory : WebApplicationFactory<Program>
     protected override void ConfigureClient(HttpClient client)
     {
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {FakeJwtTokenGenerator.GetToken()}");
-        
+
         base.ConfigureClient(client);
     }
 }

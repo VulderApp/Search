@@ -3,7 +3,8 @@ using Vulder.School.Infrastructure.Database.Interface;
 
 namespace Vulder.School.Application.School.AddSchool;
 
-public class AddSchoolRequestHandler : IRequestHandler<Core.ProjectAggregate.School.School, Core.ProjectAggregate.School.School>
+public class
+    AddSchoolRequestHandler : IRequestHandler<Core.ProjectAggregate.School.School, Core.ProjectAggregate.School.School>
 {
     private readonly ISchoolRepository _schoolRepository;
 

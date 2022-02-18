@@ -28,8 +28,9 @@ public class FindSchoolsControllerTest
         var httpContent = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
         await client.PostAsync("/school/AddSchool", httpContent);
         using var findResponse = await client.GetAsync("school/FindSchools?input=SP");
-        
+
         Assert.Equal(HttpStatusCode.OK, findResponse.StatusCode);
-        Assert.Single(JsonSerializer.Deserialize<List<SchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ?? throw new InvalidOperationException());
+        Assert.Single(JsonSerializer.Deserialize<List<SchoolsDto>>(await findResponse.Content.ReadAsStreamAsync()) ??
+                      throw new InvalidOperationException());
     }
 }

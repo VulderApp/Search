@@ -8,4 +8,5 @@ public interface ISchoolRepository
     Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input);
     Task Create(Core.ProjectAggregate.School.School school);
     Task<bool> Update(Core.ProjectAggregate.School.School school);
+    Task<bool> Delete(Guid id);
 }

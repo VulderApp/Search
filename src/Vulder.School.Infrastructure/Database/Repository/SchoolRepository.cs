@@ -6,7 +6,7 @@ namespace Vulder.School.Infrastructure.Database.Repository;
 public class SchoolRepository : ISchoolRepository
 {
     private const int DocumentLimit = 20;
-    
+
     public SchoolRepository(MongoDbContext context)
     {
         Schools = context.Schools;
@@ -30,7 +30,7 @@ public class SchoolRepository : ISchoolRepository
 
     public async Task<long> GetSchoolDocumentsCount()
     {
-        return (await Schools.CountDocumentsAsync(_ => true) / DocumentLimit) + 1;
+        return await Schools.CountDocumentsAsync(_ => true) / DocumentLimit + 1;
     }
 
     public Task<List<Core.ProjectAggregate.School.School>> GetSchoolsWithPagination(int page)
@@ -51,6 +51,13 @@ public class SchoolRepository : ISchoolRepository
     public async Task<bool> Update(Core.ProjectAggregate.School.School school)
     {
         var result = await Schools.ReplaceOneAsync(x => x.Id == school.Id, school);
+
+        return result.IsAcknowledged;
+    }
+
+    public async Task<bool> Delete(Guid id)
+    {
+        var result = await Schools.DeleteOneAsync(x => x.Id == id);
 
         return result.IsAcknowledged;
     }

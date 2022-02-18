@@ -7,23 +7,20 @@ namespace Vulder.School.Api.Controllers.School;
 
 [Authorize]
 [ApiController]
-[Route("school/[controller]")]
-public class SchoolsController : ControllerBase
+[Route("/school/[controller]")]
+public class DeleteController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public SchoolsController(IMediator mediator)
+    public DeleteController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Schools([FromQuery] int page = 1)
+    [HttpDelete]
+    public async Task<IActionResult> DeleteSchool([FromBody] DeleteSchoolModel deleteSchoolModel)
     {
-        var result = await _mediator.Send(new SchoolsModel
-        {
-            Page = page
-        });
+        var result = await _mediator.Send(deleteSchoolModel);
 
         return Ok(result);
     }

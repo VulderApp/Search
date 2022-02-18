@@ -18,10 +18,10 @@ public class SchoolModelValidatorTest
         };
 
         var result = new SchoolModelValidator().TestValidate(schoolModel).IsValid;
-        
+
         Assert.True(result);
     }
-    
+
     [Fact]
     public void ValidateSchoolModel_NotValid()
     {
@@ -33,7 +33,7 @@ public class SchoolModelValidatorTest
         };
 
         var result = new SchoolModelValidator().TestValidate(schoolModel).IsValid;
-        
+
         Assert.False(result);
     }
 }

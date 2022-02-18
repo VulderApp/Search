@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,20 +10,21 @@ using Xunit;
 
 namespace Vulder.School.IntegrationTests.Controllers.School;
 
-public class UpdateSchoolControllerTest
+public class DeleteControllerTest
 {
     [Fact]
     public async Task POST_Responds_200_StatusCode()
     {
         var schoolModel = new AddSchoolModel
         {
-            Name = "ZSP 2 w Waw",
+            Name = "ZSP 404 w Warszawie",
             SchoolUrl = "http://example.com",
             TimetableUrl = "http://example.com/timetable"
         };
 
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
+
         var httpContent =
             new StringContent(JsonConvert.SerializeObject(schoolModel), Encoding.UTF8, "application/json");
         using var addResponse = await client.PostAsync("/school/AddSchool", httpContent);
@@ -31,19 +32,16 @@ public class UpdateSchoolControllerTest
             JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(
                 await addResponse.Content.ReadAsStringAsync())!.Id;
 
-        var updateSchoolModel = new UpdateSchoolModel
+        var updateSchoolModel = new DeleteSchoolModel
         {
-            Id = schoolId,
-            Name = "ZSP 2 in Warsaw",
-            SchoolUrl = "http://example.com",
-            TimetableUrl = "http://example.com/timetable"
+            Id = schoolId
         };
 
         httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8,
             "application/json");
-        using var updateResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
+        using var deleteResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
 
-        Assert.Equal(HttpStatusCode.OK, updateResponse.StatusCode);
-        Assert.True(JsonConvert.DeserializeObject<ResultDto>(await updateResponse.Content.ReadAsStringAsync())!.Result);
+        Assert.Equal(HttpStatusCode.OK, deleteResponse.StatusCode);
+        Assert.True(JsonConvert.DeserializeObject<ResultDto>(await deleteResponse.Content.ReadAsStringAsync())!.Result);
     }
 }
