@@ -54,4 +54,11 @@ public class SchoolRepository : ISchoolRepository
 
         return result.IsAcknowledged;
     }
+
+    public async Task<bool> Delete(Guid id)
+    {
+        var result = await Schools.DeleteOneAsync(x => x.Id == id);
+
+        return result.IsAcknowledged;
+    }
 }

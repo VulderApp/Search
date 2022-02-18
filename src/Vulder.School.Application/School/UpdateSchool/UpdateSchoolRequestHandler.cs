@@ -5,7 +5,7 @@ using Vulder.School.Infrastructure.Database.Interface;
 
 namespace Vulder.School.Application.School.UpdateSchool;
 
-public class UpdateSchoolRequestHandler : IRequestHandler<UpdateSchoolModel, UpdateDto>
+public class UpdateSchoolRequestHandler : IRequestHandler<UpdateSchoolModel, ResultDto>
 {
     private readonly ISchoolRepository _schoolRepository;
     
@@ -14,7 +14,7 @@ public class UpdateSchoolRequestHandler : IRequestHandler<UpdateSchoolModel, Upd
         _schoolRepository = schoolRepository;
     }
     
-    public async Task<UpdateDto> Handle(UpdateSchoolModel request, CancellationToken cancellationToken)
+    public async Task<ResultDto> Handle(UpdateSchoolModel request, CancellationToken cancellationToken)
     {
         var school = await _schoolRepository.GetSchoolById(request.Id);
 
@@ -24,7 +24,7 @@ public class UpdateSchoolRequestHandler : IRequestHandler<UpdateSchoolModel, Upd
 
         var result = await _schoolRepository.Update(school);
         
-        return new UpdateDto
+        return new ResultDto
         {
             Result = result
         };
