@@ -3,6 +3,7 @@ namespace Vulder.School.Infrastructure.Database.Interface;
 public interface ISchoolRepository
 {
     Task<Core.ProjectAggregate.School.School> GetSchoolById(Guid schoolId);
+    Task<long> GetSchoolDocumentsCount();
     Task<List<Core.ProjectAggregate.School.School>> GetSchoolsWithPagination(int page);
     Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input);
     Task Create(Core.ProjectAggregate.School.School school);

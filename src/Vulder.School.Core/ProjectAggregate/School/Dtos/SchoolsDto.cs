@@ -1,7 +1,7 @@
 namespace Vulder.School.Core.ProjectAggregate.School.Dtos;
 
-public class SchoolsDto
+public record SchoolsDto
 {
-    public Guid Id { get; set; }
-    public string? Name { get; set; }
+    public List<SchoolItemDto>? Schools { get; set; }
+    public long Pages { get; set; }
 }

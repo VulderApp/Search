@@ -30,7 +30,7 @@ public class GetSchoolControllerTest
         using var response = await client.PostAsync("/school/AddSchool", httpContent);
         
         using var findResponse = await client.GetAsync("school/FindSchools?input=LO");
-        var findSchoolDeserialized = JsonConvert.DeserializeObject<List<SchoolsDto>>(await findResponse.Content.ReadAsStringAsync());
+        var findSchoolDeserialized = JsonConvert.DeserializeObject<List<SchoolItemDto>>(await findResponse.Content.ReadAsStringAsync());
 
         using var getSchoolResponse =
             await client.GetAsync($"school/GetSchool?schoolId={findSchoolDeserialized![0].Id}");
