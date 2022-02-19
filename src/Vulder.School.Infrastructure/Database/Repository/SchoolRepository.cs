@@ -33,6 +33,12 @@ public class SchoolRepository : ISchoolRepository
         return await Schools.CountDocumentsAsync(_ => true) / DocumentLimit + 1;
     }
 
+    public async Task<long> GetSchoolsDocumentsCountWithPagination(string input)
+    {
+        return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input))
+            .CountDocumentsAsync() / DocumentLimit + 1;
+    }
+
     public Task<List<Core.ProjectAggregate.School.School>> GetSchoolsWithPagination(int page)
     {
         var schools = Schools.AsQueryable()
@@ -45,6 +51,14 @@ public class SchoolRepository : ISchoolRepository
     public async Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input)
     {
         return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input)).Limit(10)
+            .ToListAsync();
+    }
+
+    public async Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInputWithPagination(string input, int page)
+    {
+        return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input))
+            .Skip((page - 1) * DocumentLimit)
+            .Limit(20)
             .ToListAsync();
     }
 
