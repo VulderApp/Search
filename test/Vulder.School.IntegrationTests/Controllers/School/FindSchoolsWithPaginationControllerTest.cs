@@ -29,11 +29,11 @@ public class FindSchoolsWithPaginationControllerTest
         await client.PostAsync("/school/AddSchool", httpContent);
 
         using var findResponse = await client.GetAsync("school/FindSchoolsWithPagination?input=SP&page=1");
-        var serializedResponse =
+        var deserializedResponse =
             JsonConvert.DeserializeObject<SchoolsDto>(await findResponse.Content.ReadAsStringAsync()) ??
             throw new InvalidOperationException();
 
         Assert.Equal(HttpStatusCode.OK, findResponse.StatusCode);
-        Assert.Single(serializedResponse.Schools!.Where(x => x.Name == body.Name));
+        Assert.Single(deserializedResponse.Schools!.Where(x => x.Name == body.Name));
     }
 }
