@@ -10,6 +10,6 @@ public class RedisContext
         var redis = ConnectionMultiplexer.Connect(Constants.RedisConnectionString);
         Schools = redis.GetDatabase(0);
     }
-    
+
     public IDatabase Schools { get; set; }
 }

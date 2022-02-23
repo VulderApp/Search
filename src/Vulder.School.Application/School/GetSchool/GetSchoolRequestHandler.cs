@@ -8,8 +8,8 @@ namespace Vulder.School.Application.School.GetSchool;
 
 public class GetSchoolRequestHandler : IRequestHandler<GetSchoolModel, Core.ProjectAggregate.School.School>
 {
-    private readonly ISchoolRepository _schoolRepository;
     private readonly ISchoolCacheRepository _schoolCacheRepository;
+    private readonly ISchoolRepository _schoolRepository;
 
     public GetSchoolRequestHandler(ISchoolRepository schoolRepository, ISchoolCacheRepository schoolCacheRepository)
     {
@@ -23,13 +23,13 @@ public class GetSchoolRequestHandler : IRequestHandler<GetSchoolModel, Core.Proj
         var schoolFromCache = await _schoolCacheRepository.GetSchoolById(request.SchoolId);
         if (schoolFromCache?.School != null && schoolFromCache.ExpiredAt < DateTimeOffset.Now)
             return schoolFromCache.School;
-        
+
         var school = await _schoolRepository.GetSchoolById(request.SchoolId);
         var schoolCache = new SchoolCache
         {
             School = school
         };
-        
+
         await _schoolCacheRepository.Create(school.Id, schoolCache);
         return school;
     }

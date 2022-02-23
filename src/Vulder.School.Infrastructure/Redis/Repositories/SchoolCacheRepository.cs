@@ -7,12 +7,12 @@ namespace Vulder.School.Infrastructure.Redis.Repositories;
 
 public class SchoolCacheRepository : ISchoolCacheRepository
 {
-    private IDatabase Schools { get; }
-    
     public SchoolCacheRepository(RedisContext context)
     {
         Schools = context.Schools;
     }
+
+    private IDatabase Schools { get; }
 
     public async Task Create(Guid schoolId, SchoolCache schoolCache)
     {

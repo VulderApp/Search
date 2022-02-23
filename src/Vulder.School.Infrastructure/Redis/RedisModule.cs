@@ -1,7 +1,6 @@
 using Autofac;
 using Vulder.School.Infrastructure.Redis.Interfaces;
 using Vulder.School.Infrastructure.Redis.Repositories;
-using Module = Autofac.Module;
 
 namespace Vulder.School.Infrastructure.Redis;
 
