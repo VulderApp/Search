@@ -12,6 +12,7 @@ public class WebServerFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         Environment.SetEnvironmentVariable("MONGODB_CONNECTION_STRING", "mongodb://localhost:27017/");
+        Environment.SetEnvironmentVariable("REDIS_CONNECTION_STRING", "localhost");
 
         builder.UseEnvironment("Production");
         builder.ConfigureAppConfiguration(configurationBuilder =>
