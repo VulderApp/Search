@@ -1,5 +1,4 @@
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vulder.School.Core.Models;
 using Vulder.School.Core.ProjectAggregate.School.Dtos;
@@ -18,7 +17,6 @@ public class FindSchoolsController : ControllerBase
     }
 
     [HttpGet]
-    [AllowAnonymous]
     public async Task<IActionResult> FindSchools([FromQuery] string input)
     {
         var result = await _mediator.Send(new FindSchoolModel
