@@ -50,7 +50,8 @@ public class SchoolRepository : ISchoolRepository
 
     public async Task<List<Core.ProjectAggregate.School.School>> GetSchoolsByInput(string input)
     {
-        return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input)).Limit(10)
+        return await Schools.Find(Builders<Core.ProjectAggregate.School.School>.Filter.Text(input))
+            .Limit(10)
             .ToListAsync();
     }
 
