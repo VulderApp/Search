@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="10.3.6"/>
+        <PackageReference Include="FluentValidation" Version="10.4.0"/>
         <PackageReference Include="Vulder.SharedKernel" Version="0.1.8"/>
     </ItemGroup>
 
