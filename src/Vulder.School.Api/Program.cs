@@ -1,5 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using NLog.Web;
 using Vulder.School.Application;
 using Vulder.School.Infrastructure;
 using Vulder.SharedKernel;
@@ -19,6 +20,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(contain
     containerBuild.RegisterModule(new ApplicationModule());
     containerBuild.RegisterModule(new InfrastructureModule());
 }));
+builder.Host.UseNLog();
 
 var app = builder.Build();
 
@@ -29,6 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+app.UseMiddleware<ControllerActionLoggingMiddleware>();
 
 app.UseCors("CORS");
 
