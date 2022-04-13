@@ -31,10 +31,10 @@ public class FindSchoolsControllerTest
         using var findResponse = await client.GetAsync("school/FindSchools?input=SP");
 
         var deserializedResponse =
-            JsonConvert.DeserializeObject<List<SchoolItemDto>>(await findResponse.Content.ReadAsStringAsync() ??
-                                                               throw new InvalidOperationException());
+            JsonConvert.DeserializeObject<List<SchoolItemDto>>(await findResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, findResponse.StatusCode);
-        Assert.Single(deserializedResponse!.Where(x => x.Name == body.Name));
+        Assert.True(Guid.TryParse(deserializedResponse?.Select(x => x.Id).FirstOrDefault().ToString(), out _));
+        Assert.NotNull(deserializedResponse!.First(x => x.Name == body.Name));
     }
 }

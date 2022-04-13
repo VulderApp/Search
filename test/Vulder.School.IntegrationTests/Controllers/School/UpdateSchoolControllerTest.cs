@@ -42,8 +42,9 @@ public class UpdateSchoolControllerTest
         httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8,
             "application/json");
         using var updateResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
+        var resultModel = JsonConvert.DeserializeObject<ResultDto>(await updateResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, updateResponse.StatusCode);
-        Assert.True(JsonConvert.DeserializeObject<ResultDto>(await updateResponse.Content.ReadAsStringAsync())!.Result);
+        Assert.True(resultModel?.Result);
     }
 }

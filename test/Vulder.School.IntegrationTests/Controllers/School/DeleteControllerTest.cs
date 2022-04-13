@@ -40,8 +40,9 @@ public class DeleteControllerTest
         httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8,
             "application/json");
         using var deleteResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
+        var deleteModel = JsonConvert.DeserializeObject<ResultDto>(await deleteResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, deleteResponse.StatusCode);
-        Assert.True(JsonConvert.DeserializeObject<ResultDto>(await deleteResponse.Content.ReadAsStringAsync())!.Result);
+        Assert.True(deleteModel?.Result);
     }
 }
