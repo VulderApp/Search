@@ -18,9 +18,12 @@ public class DeleteController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteSchool([FromBody] DeleteSchoolModel deleteSchoolModel)
+    public async Task<IActionResult> DeleteSchool([FromQuery] Guid schoolId)
     {
-        var result = await _mediator.Send(deleteSchoolModel);
+        var result = await _mediator.Send(new DeleteSchoolModel
+        {
+            Id = schoolId
+        });
 
         return Ok(result);
     }
