@@ -23,10 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\..\src\Vulder.School.Api\Vulder.School.Api.csproj" />
         <ProjectReference Include="..\..\src\Vulder.School.Core\Vulder.School.Core.csproj" />
     </ItemGroup>
