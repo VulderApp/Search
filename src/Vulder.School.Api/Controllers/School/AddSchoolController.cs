@@ -8,7 +8,7 @@ namespace Vulder.School.Api.Controllers.School;
 
 [Authorize]
 [ApiController]
-[Route("school/[controller]")]
+[Route("/school/add")]
 public class AddSchoolController : ControllerBase
 {
     private readonly IMapper _mapper;

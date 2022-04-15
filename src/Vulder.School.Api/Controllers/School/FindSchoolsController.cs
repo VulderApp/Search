@@ -6,7 +6,7 @@ using Vulder.School.Core.ProjectAggregate.School.Dtos;
 namespace Vulder.School.Api.Controllers.School;
 
 [ApiController]
-[Route("/school/[controller]")]
+[Route("/school/find")]
 public class FindSchoolsController : ControllerBase
 {
     private readonly IMediator _mediator;

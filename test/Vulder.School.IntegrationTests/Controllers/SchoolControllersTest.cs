@@ -39,9 +39,9 @@ public class SchoolControllersTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
         var httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-        using var response = await client.PostAsync("/school/AddSchool", httpContent);
+        using var response = await client.PostAsync("/school/add", httpContent);
         var schoolModel = JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(await response.Content.ReadAsStringAsync());
-        
+
         _schoolFixture.SchoolModel = schoolModel!;
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -57,7 +57,7 @@ public class SchoolControllersTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
 
-        using var findResponse = await client.GetAsync("school/FindSchools?input=ZSP");
+        using var findResponse = await client.GetAsync("/school/find?input=ZSP");
         var deserializedResponse =
             JsonConvert.DeserializeObject<List<SchoolItemDto>>(await findResponse.Content.ReadAsStringAsync());
 
@@ -73,7 +73,7 @@ public class SchoolControllersTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
 
-        using var findResponse = await client.GetAsync("school/FindSchoolsWithPagination?input=ZSP&page=1");
+        using var findResponse = await client.GetAsync("/school/findWithPagination?input=ZSP&page=1");
         var deserializedResponse =
             JsonConvert.DeserializeObject<SchoolsDto>(await findResponse.Content.ReadAsStringAsync());
 
@@ -91,7 +91,7 @@ public class SchoolControllersTest
         using var client = application.CreateClient();
 
         using var getSchoolResponse =
-            await client.GetAsync($"school/GetSchool?schoolId={_schoolFixture.SchoolModel?.Id}");
+            await client.GetAsync($"/school?schoolId={_schoolFixture.SchoolModel?.Id}");
         var schoolModel = JsonConvert.DeserializeObject<Core.ProjectAggregate.School.School>(await getSchoolResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, getSchoolResponse.StatusCode);
@@ -108,7 +108,7 @@ public class SchoolControllersTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
 
-        using var response = await client.GetAsync("school/Schools?page=1");
+        using var response = await client.GetAsync("/school/schools?page=1");
         var schoolModel = JsonConvert.DeserializeObject<SchoolsDto>(await response.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -135,7 +135,7 @@ public class SchoolControllersTest
 
         var httpContent = new StringContent(JsonConvert.SerializeObject(updateSchoolModel), Encoding.UTF8,
             "application/json");
-        using var updateResponse = await client.PutAsync("/school/UpdateSchool", httpContent);
+        using var updateResponse = await client.PutAsync("/school/update", httpContent);
         var resultModel = JsonConvert.DeserializeObject<ResultDto>(await updateResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, updateResponse.StatusCode);
@@ -149,7 +149,7 @@ public class SchoolControllersTest
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
 
-        using var deleteResponse = await client.DeleteAsync($"/school/Delete?schoolId={_schoolFixture.SchoolModel?.Id}");
+        using var deleteResponse = await client.DeleteAsync($"/school/delete?schoolId={_schoolFixture.SchoolModel?.Id}");
         var deleteModel = JsonConvert.DeserializeObject<ResultDto>(await deleteResponse.Content.ReadAsStringAsync());
 
         Assert.Equal(HttpStatusCode.OK, deleteResponse.StatusCode);

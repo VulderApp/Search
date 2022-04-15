@@ -7,7 +7,7 @@ namespace Vulder.School.Api.Controllers.School;
 
 [ApiController]
 [Authorize]
-[Route("school/[controller]")]
+[Route("/school/update")]
 public class UpdateSchoolController : ControllerBase
 {
     private readonly IMediator _mediator;
