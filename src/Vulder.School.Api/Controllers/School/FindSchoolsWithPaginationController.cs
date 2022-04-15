@@ -7,7 +7,7 @@ namespace Vulder.School.Api.Controllers.School;
 
 [Authorize]
 [ApiController]
-[Route("/school/[controller]")]
+[Route("/school/findWithPagination")]
 public class FindSchoolsWithPaginationController : ControllerBase
 {
     private readonly IMediator _mediator;

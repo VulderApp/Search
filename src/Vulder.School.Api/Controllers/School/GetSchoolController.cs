@@ -5,7 +5,7 @@ using Vulder.School.Core.Models;
 namespace Vulder.School.Api.Controllers.School;
 
 [ApiController]
-[Route("school/[controller]")]
+[Route("/school")]
 public class GetSchoolController : ControllerBase
 {
     private readonly IMediator _mediator;
