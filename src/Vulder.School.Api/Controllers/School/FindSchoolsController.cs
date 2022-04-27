@@ -1,4 +1,5 @@
 using MediatR;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Vulder.School.Core.Models;
 using Vulder.School.Core.ProjectAggregate.School.Dtos;
@@ -10,10 +11,12 @@ namespace Vulder.School.Api.Controllers.School;
 public class FindSchoolsController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IMapper _mapper;
 
-    public FindSchoolsController(IMediator mediator)
+    public FindSchoolsController(IMediator mediator, IMapper mapper)
     {
         _mediator = mediator;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -24,10 +27,11 @@ public class FindSchoolsController : ControllerBase
             Input = input
         });
 
-        return Ok(result.Select(x => new SchoolItemDto
-        {
-            Id = x.Id,
-            Name = x.Name
-        }).ToList());
+        if (result.Count == 0)
+            return NoContent();
+
+        var mappedResult  = _mapper.Map<SchoolItemDto[]>(result);
+
+        return Ok(mappedResult);
     }
 }
