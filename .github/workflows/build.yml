@@ -26,5 +26,5 @@ jobs:
           registry: ghcr.io
           context: .
           push: true
-          tags: ghcr.io/vulderapp/school:22
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
