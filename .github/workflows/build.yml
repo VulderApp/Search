@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - '*'
+  pull_request:
 jobs:
   build-push-image:
     runs-on: ubuntu-latest
@@ -25,4 +26,5 @@ jobs:
           registry: ghcr.io
           context: .
           push: true
-          tags: ghcr.io/vulderapp/school:${{ steps.meta.outputs.tags }}
+          tags: ghcr.io/vulderapp/school:22
+          labels: ${{ steps.meta.outputs.labels }}
