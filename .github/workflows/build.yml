@@ -27,3 +27,4 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/vulderapp/school:${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
