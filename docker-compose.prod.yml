@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  search:
+    build: .
+    ports:
+      - 80:80
+      - 443:443
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - 27017:27017
+  redis:
+    image: redis:6.2.6-alpine
+    restart: always
+    ports:
+      - 6379:6379
+volumes:
+  mongodb-data:
+    external: true
