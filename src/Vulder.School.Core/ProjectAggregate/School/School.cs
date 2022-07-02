@@ -16,10 +16,19 @@ public class School : IRequest<School>
     [BsonRequired] public string? TimetableUrl { get; set; }
 
     [BsonRequired] public string? SchoolUrl { get; set; }
+    
+    [BsonRequired] public DateTimeOffset CreatedAt { get; set; }
 
     public School GenerateId()
     {
         Id = Guid.NewGuid();
+        return this;
+    }
+
+    public School CreateTimestamp()
+    {
+        CreatedAt = DateTimeOffset.Now;
+
         return this;
     }
 }

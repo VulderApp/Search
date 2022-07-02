@@ -16,7 +16,7 @@ public class
     public async Task<Core.ProjectAggregate.School.School> Handle(Core.ProjectAggregate.School.School request,
         CancellationToken cancellationToken)
     {
-        await _schoolRepository.Create(request.GenerateId());
+        await _schoolRepository.Create(request.GenerateId().CreateTimestamp());
 
         return request;
     }
